@@ -110,7 +110,7 @@
           ndef.addEventListener("reading", ({ message, serialNumber }) => {
             log(`> Serial Number: ${serialNumber}`);
             log(`> Records: (${message.records.length})`);
-            log(`> Records: JSON.stringify(${message})`);
+            log(`> Records: (${message.records[0]})`);
           });
         } catch (error) {
           log("錯誤:" + error);
