@@ -20,7 +20,7 @@
   </head>
 
   <body style="text-align: center;">
-    <h2 style="margin: 0;">Web NFC 範例 v3</h2>
+    <h2 style="margin: 0;">Web NFC 範例 v4</h2>
     <p class="availability">
       <h4 style="margin: 0;">裝置需支援 NFC、Chrome 89+ 以上版本</h4>
     </p>
@@ -103,21 +103,21 @@
           await ndef.scan();
           log("> 開始掃描");
 
-          ndef.onreading = ({message}) => {
-            log(`> Records: ` + JSON.stringify(message));
-            // console.log("NDEF message read.");
-            console.log(message);
-          };
+//           ndef.onreading = ({message}) => {
+//             log(`> Records: ` + JSON.stringify(message));
+//             // console.log("NDEF message read.");
+//             console.log(message);
+//           };
 
           ndef.addEventListener("readingerror", () => {
             log("無法讀取，請更換 NFC Tag");
           });
 
-          // ndef.addEventListener("reading", ({ message, serialNumber }) => {
-          //   log(`> Serial Number: ${serialNumber}`);
-          //   log(`> Records: (${message.records.length})`);
-          //   log(`> Records: JSON.stringify(${message})`);
-          // });
+          ndef.addEventListener("reading", ({ message, serialNumber }) => {
+            log(`> Serial Number: ${serialNumber}`);
+            log(`> Records: (${message.records.length})`);
+            log(`> Records: ` + JSON.stringify(message)`);
+          });
         } catch (error) {
           log("錯誤:" + error);
         }
