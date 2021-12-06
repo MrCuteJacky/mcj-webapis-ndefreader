@@ -103,8 +103,11 @@
           await ndef.scan();
           log("> 開始掃描");
 
-          ndef.onreading = (event) => {
-            log(`> Records: ` + JSON.stringify(event));
+          ndef.onreading = ({records, serialNumber}) => {
+            log('> serialNumber' + readInt(serialNumber));
+            log('> serialNumber' + serialNumber);
+            log(`> Records: ` + JSON.stringify(records));
+            log('> Records: ' + records[0]);
             // console.log("NDEF message read.");
           };
 
@@ -121,6 +124,14 @@
           log("錯誤:" + error);
         }
       });
+      
+      function readInt(array) {
+       var value = 0;
+       for (var i = 0; i < array.length; i++) {
+          value = (value * 256) + array[i];
+       }
+       return value;
+    }
     </script>
   </body>
 </html>
