@@ -109,8 +109,13 @@
 
           ndef.addEventListener("reading", ({ message, serialNumber }) => {
             log(`> Serial Number: ${serialNumber}`);
-            log(`> Records: (${message.records.length})`);
-            log(`> Records: (${message.records[0]})`);
+            log(`> Records..records.length: (${message.records.length})`);
+            log(`> Records.data: (${message.records[0].data})`);
+            log(`> Records.encoding: (${message.records[0].encoding})`);
+            log(`> Records.id: (${message.records[0].id})`);
+            log(`> Records.lang: (${message.records[0].lang})`);
+            log(`> Records.mediaType: (${message.records[0].mediaType})`);
+            log(`> Records.recordType: (${message.records[0].recordType})`);
           });
         } catch (error) {
           log("錯誤:" + error);
