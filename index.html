@@ -109,6 +109,8 @@
             log(`> Records: ` + JSON.stringify(records));
             log('> Records: ' + records[0]);
             // console.log("NDEF message read.");
+            console.log(records);
+            console.log(serialNumber);
           };
 
           ndef.addEventListener("readingerror", () => {
