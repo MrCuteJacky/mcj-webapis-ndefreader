@@ -103,15 +103,20 @@
           await ndef.scan();
           log("> 開始掃描");
 
+          ndef.onreading = (event) => {
+            log(`> Records: JSON.stringify(event)`);
+            // console.log("NDEF message read.");
+          };
+
           ndef.addEventListener("readingerror", () => {
             log("無法讀取，請更換 NFC Tag");
           });
 
-          ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            log(`> Serial Number: ${serialNumber}`);
-            log(`> Records 1: (${message.records.length})`);
-            log(`> Records 2: JSON.stringify(${message})`);
-          });
+          // ndef.addEventListener("reading", ({ message, serialNumber }) => {
+          //   log(`> Serial Number: ${serialNumber}`);
+          //   log(`> Records: (${message.records.length})`);
+          //   log(`> Records: JSON.stringify(${message})`);
+          // });
         } catch (error) {
           log("錯誤:" + error);
         }
